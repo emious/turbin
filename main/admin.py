@@ -7,8 +7,13 @@ from main.models import WebsiteSetting
 
 @admin.register(WebsiteSetting)
 class WebsiteSetting(admin.ModelAdmin):
-    list_display = ("phone_number",)
 
+    list_display = ("phone_number",
+                    "email",
+                    "address",
+                    "work_time",
+                    "about",
+                    'image_tag')
 
 
     def has_delete_permission(self, request, obj=None):

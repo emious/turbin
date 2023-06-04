@@ -11,6 +11,8 @@ class Product(models.Model):
     thumbnail_2 = models.ImageField(upload_to='images/products', blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
 
+
+
     def __str__(self):
         return self.name
 
