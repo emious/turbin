@@ -13,15 +13,21 @@ class Slider(models.Model):
         verbose_name = 'اسلاید'
         verbose_name_plural = 'اسلایدر'
 
+    def __str__(self):
+        return self
 
-class HeaderMenu:
+
+
+class NavMenu(models.Model):
+    name = models.CharField(max_length=50, verbose_name='نام')
+    link = models.URLField(default='', verbose_name='لینک')
+
     class Meta:
         verbose_name = 'منو'
         verbose_name_plural = 'منو ها'
 
-    name = models.CharField(max_length=50),
-    link = models.SlugField(),
-
+    def __str__(self):
+        return self.name
 
 
 class WebsiteSetting(models.Model):

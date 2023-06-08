@@ -18,9 +18,9 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=50)
     thumbnail = models.ImageField(upload_to='images/categories', blank=True, null=True)
-    short_desc = models.TextField()
+    short_desc = models.TextField(null=True, blank=True)
 
 
     def __str__(self):

@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from product.models import Category
 
 
 # Create your views here.
 
 def index_page(reqeust):
-    context = {}
+    categories = Category.objects.all()
+    context = {'Category': categories}
     return render(reqeust, 'main/index.html', context)

@@ -56,7 +56,7 @@
                                 <div class="icon-box"><span class="flaticon-technology"></span></div>
                                 <ul>
                                     <li>با ما تماس بگیرید</li>
-                                    <li><strong class="ltr-text">0912 345 67 89</strong></li>
+                                    <li><strong class="ltr-text">{{ WebsiteSetting.phone_number }}</strong></li>
                                 </ul>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                                 <div class="icon-box"><span class="flaticon-location-pin"></span></div>
                                 <ul>
                                     <li>ایمیل</li>
-                                    <li><strong>conspro@mail.com</strong></li>
+                                    <li><strong>{{ WebsiteSetting.email }}</strong></li>
                                 </ul>
                             </div>
                         </div>
@@ -103,51 +103,27 @@
 
                             <div class="navbar-collapse collapse clearfix">
                                 <ul class="navigation clearfix">
-                                    <li class="dropdown current"><a href="#">خانه</a>
+                                    {% for each in nav_menu %}
+                                        {% if each.product|length != 0 %}
+                                                <li class="dropdown"><a href="#">{{ each.name }}</a>
                                         <ul>
-                                            <li><a href="index.html">خانه 1</a></li>
-                                            <li><a href="index-2.html">خانه 2</a></li>
-                                            <li class="dropdown"><a href="#">طرح های سرصفحه</a>
-                                            	<ul>
-                                                    <li><a href="index.html">طرح سرصفحه 1</a></li>
-                                                    <li><a href="index-2.html">طرح سرصفحه 2</a></li>
-                                                </ul>
-                                            </li>
+                                            {% for product in each.product %}
+                                            <li><a href="about.html">{{ product.name }}</a></li>
+                                            {% endfor %}
+
                                         </ul>
                                     </li>
-                                    <li class="dropdown"><a href="#">درباره ما</a>
-                                        <ul>
-                                            <li><a href="about.html">درباره ما</a></li>
-                                            <li><a href="team.html">تیم</a></li>
-                                            <li><a href="error.html">صفحه خطا</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">خدمات</a>
-                                        <ul>
-                                            <li><a href="services.html">خدمات 1</a></li>
-                                            <li><a href="services-2.html">خدمات 2</a></li>
-                                            <li><a href="service-detail.html">جزئیات خدمت</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">پروژه ها</a>
-                                        <ul>
-                                            <li><a href="project.html">پروژه ها</a></li>
-                                            <li><a href="project-detail.html">جزئیات پروژه</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">فروشگاه</a>
-                                        <ul>
-                                            <li><a href="shop.html">فروشگاه</a></li>
-                                            <li><a href="shop-single.html">جزئیات محصول فروشگاه</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">بلاگ</a>
-                                        <ul>
-                                            <li><a href="blog.html">بلاگ ما</a></li>
-                                            <li><a href="blog-single.html">جزئیات مطلب بلاگ</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">تماس با ما</a></li>
+
+
+                                        {% else %}
+                                            <li><a href={{ each.link }}>{{ each.name }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+
+
+
+
                                 </ul>
                             </div>
                         </nav>
@@ -484,90 +460,25 @@
             </div>
 
             <div class="row clearfix grid-blocks">
-
-				<!--Services Block-->
-            	<div class="services-block col-md-4 col-sm-6 col-xs-12">
+                <!--Services Block-->
+                {% for each in Category %}
+                    <div class="services-block col-md-4 col-sm-6 col-xs-12">
                 	<div class="inner-box">
                     	<div class="image wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        	<a href="service-detail.html"><img src="/media/images/template/resource/services-1.jpg" alt=""></a>
+                        	<a href="service-detail.html"><img src="{{ each.thumbnail.url }}" alt="{{ each.name }}"></a>
                         </div>
                         <div class="lower-content">
                         	<a href="service-detail.html" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
-                        	<h3><a href="service-detail.html">طراحی و ساخت</a></h3>
-                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون</div>
+                        	<h3><a href="service-detail.html">{{ each.name }}</a></h3>
+                            <div class="text">{{ each.short_desc }}</div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
 
-                <!--Services Block-->
-            	<div class="services-block col-md-4 col-sm-6 col-xs-12">
-                	<div class="inner-box">
-                    	<div class="image wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        	<a href="service-detail.html"><img src="/media/images/template/resource/services-1.jpg" alt=""></a>
-                        </div>
-                        <div class="lower-content">
-                        	<a href="service-detail.html" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
-                        	<h3><a href="service-detail.html">طراحی و ساخت</a></h3>
-                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون</div>
-                        </div>
-                    </div>
-                </div>
 
-                <!--Services Block-->
-            	<div class="services-block col-md-4 col-sm-6 col-xs-12">
-                	<div class="inner-box">
-                    	<div class="image wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        	<a href="service-detail.html"><img src="/media/images/template/resource/services-1.jpg" alt=""></a>
-                        </div>
-                        <div class="lower-content">
-                        	<a href="service-detail.html" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
-                        	<h3><a href="service-detail.html">طراحی و ساخت</a></h3>
-                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون</div>
-                        </div>
-                    </div>
-                </div>
 
-                <!--Services Block-->
-            	<div class="services-block col-md-4 col-sm-6 col-xs-12">
-                	<div class="inner-box">
-                    	<div class="image wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        	<a href="service-detail.html"><img src="/media/images/template/resource/services-1.jpg" alt=""></a>
-                        </div>
-                        <div class="lower-content">
-                        	<a href="service-detail.html" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
-                        	<h3><a href="service-detail.html">طراحی و ساخت</a></h3>
-                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون</div>
-                        </div>
-                    </div>
-                </div>
 
-                <!--Services Block-->
-            	<div class="services-block col-md-4 col-sm-6 col-xs-12">
-                	<div class="inner-box">
-                    	<div class="image wow fadeIn" data-wow-delay="300ms" data-wow-duration="1500ms">
-                        	<a href="service-detail.html"><img src="/media/images/template/resource/services-2.jpg" alt=""></a>
-                        </div>
-                        <div class="lower-content">
-                        	<a href="service-detail.html" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
-                        	<h3><a href="service-detail.html">ساخت و ساز عمومی</a></h3>
-                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Services Block-->
-            	<div class="services-block col-md-4 col-sm-6 col-xs-12">
-                	<div class="inner-box">
-                    	<div class="image wow fadeIn" data-wow-delay="600ms" data-wow-duration="1500ms">
-                        	<a href="service-detail.html"><img src="/media/images/template/resource/services-3.jpg" alt=""></a>
-                        </div>
-                        <div class="lower-content">
-                        	<a href="service-detail.html" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
-                        	<h3><a href="service-detail.html">کار تیمی عالی</a></h3>
-                            <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون</div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
 
@@ -1612,9 +1523,9 @@
                                 <div class="footer-widget logo-widget">
                                 	<div class="widget-content">
                                     	<div class="footer-logo">
-                                        	<a href="index.html"><img src="/media//media/images/template/template/footer-logo.png" alt=""></a>
+                                        	<a href="index.html"><img src="{{ WebsiteSetting.footer_logo.url }}" alt=""></a>
                                         </div>
-										<div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله</div>
+										<div class="text">{{ WebsiteSetting.about }}</div>
                                         <ul class="social-icon-two">
                                             <li><a href="#"><span class="fa fa-facebook"></span></a></li>
                                             <li><a href="#"><span class="fa fa-twitter"></span></a></li>
@@ -1632,12 +1543,9 @@
                                 	<h2>دسترسی سریع</h2>
                                     <div class="widget-content">
                                         <ul class="list">
-                                            <li><a href="#">خانه</a></li>
-                                            <li><a href="#">درباره ما</a></li>
-                                            <li><a href="#">خدمات</a></li>
-                                            <li><a href="#">فروشگاه</a></li>
-                                            <li><a href="#">بلاگ</a></li>
-                                            <li><a href="#">تماس </a></li>
+                                            {% for each in nav_menu %}
+                                            <li><a href={{ each.link }}>{{ each.name }}</a></li>
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </div>
@@ -1657,10 +1565,10 @@
                                     <h2>آدرس ما</h2>
                                     <div class="widget-content">
                                         <ul class="list-style-one">
-                                            <li><span class="icon fa fa-map-marker"></span>تبریز، چهارراه آبرسان، فلکه دانشگاه، برج بلور، طبقه 456</li>
-                                            <li><span class="icon fa fa-phone"></span><span class="ltr-text">(880) 1723801729</span></li>
-                                            <li><span class="icon fa fa-envelope"></span>consproinc@gmail.com</li>
-                                            <li><span class="icon fa fa-clock-o"></span>9:00 ق.ظ - 5:00 ب.ظ جمعه تعطیل</li>
+                                            <li><span class="icon fa fa-map-marker"></span>{{ WebsiteSetting.address }}</li>
+                                            <li><span class="icon fa fa-phone"></span><span class="ltr-text">{{ WebsiteSetting.phone_number }}</span></li>
+                                            <li><span class="icon fa fa-envelope"></span>{{ WebsiteSetting.email }}</li>
+                                            <li><span class="icon fa fa-clock-o"></span>{{ WebsiteSetting.work_time }}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1699,7 +1607,7 @@
         	<div class="auto-container">
             	<div class="row clearfix">
                     <div class="column col-md-6 col-sm-6 col-xs-12">
-                        <div class="copyright">ارائه شده در وب‌سایت <a href="https://www.rtl-theme.com" target="_blank">راست‌چین</a></div>
+                        <div class="copyright">ارائه شده در وب‌سایت <a href="" target="_blank">karyo</a></div>
                     </div>
                     <div class="column col-md-6 col-sm-6 col-xs-12">
                         <ul class="footer-nav">
