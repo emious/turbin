@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from main import models
-from main.models import WebsiteSetting, NavMenu
+from main.models import WebsiteSetting, NavMenu, Slider
 
 
 class WebsiteSettingAdmin(admin.ModelAdmin):
@@ -23,3 +23,5 @@ class WebsiteSettingAdmin(admin.ModelAdmin):
 
 admin.site.register(WebsiteSetting, WebsiteSettingAdmin)
 admin.site.register(NavMenu)
+admin.site.register(Slider)
+

@@ -9,12 +9,18 @@ from django.conf import settings
 
 
 class Slider(models.Model):
+    title = models.CharField(blank=True, null=True, max_length=100, verbose_name='عنوان')
+    short_desc = models.CharField(blank=True, null=True, max_length=100, verbose_name='توضیح کوتاه')
+    link = models.URLField(blank=True, null=True, verbose_name='لینک')
+    image = models.ImageField(upload_to='images/template/main-slider', verbose_name='تصویر')
+
+
     class Meta:
         verbose_name = 'اسلاید'
         verbose_name_plural = 'اسلایدر'
 
     def __str__(self):
-        return self
+        return self.title
 
 
 
@@ -37,6 +43,7 @@ class WebsiteSetting(models.Model):
     address = models.CharField(max_length=50, default='', blank=True, verbose_name='آدرس')
     work_time = models.CharField(max_length=30, default='', blank=True, verbose_name='ساعت کاری')
     about = models.TextField(default='', blank=True, verbose_name='درباره ما')
+    desc = models.TextField(default='', verbose_name='توضیحات اضافه')
     favicon = models.ImageField(upload_to='images/template/', blank=True, verbose_name='ایکن')
     footer_logo = models.ImageField(upload_to='images/template/', blank=True, verbose_name='لوگو فوتر')
     logo = models.ImageField(upload_to='images/template/', blank=True, verbose_name='لوگو')
@@ -46,8 +53,8 @@ class WebsiteSetting(models.Model):
     #     return mark_safe('<img src="media/%s" width="150" height="150" />' % self.favicon)
 
     def image_tag(self):
-        if self.logo:
-            return mark_safe('<img src="%s" style="width: 200px; height:70px;" />' % self.logo.url)
+        if self.logo_small:
+            return mark_safe('<img src="%s" style="width: 200px; height:70px;" />' % self.logo_small.url)
         else:
             return 'No Image Found'
     image_tag.short_description = 'لوگو'
