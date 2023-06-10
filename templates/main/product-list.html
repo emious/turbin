@@ -1,0 +1,44 @@
+{% extends 'main/layout.html' %}
+
+{% block product_list %}
+     <!--Team Section-->
+    <section class="team-section">
+    	<div class="auto-container">
+        	<!--Sec Title-->
+            <div class="sec-title">
+            	<h2>اعضای ما</h2>
+            </div>
+            <div class="row clearfix grid-blocks">
+
+                {% for each in product_list %}
+
+                    <!--Team Member-->
+                     <div class="team-member col-md-6 col-sm-12 col-xs-12">
+                	<div class="inner-box">
+                    	<div class="row clearfix">
+                        	<!--Image Column-->
+                        	<div class="image-column col-md-5 col-sm-5 col-xs-12">
+                            	<div class="image">
+                                	<img src={% if each.thumbnail_1 %}{{ news.thumbnail_1.url }}{% else %}#{% endif %} alt={{ each.name }}>
+                                </div>
+                            </div>
+                            <!--Content Column-->
+                        	<div class="content-column col-md-7 col-sm-7 col-xs-12">
+                            	<div class="content-inner">
+                                	<div class="designation">{{ each.category.name }}</div>
+                                    <h3><a href="#">{{ each.name }}</a></h3>
+                                    <div class="text">{{ each.short_desc }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!--End Team Section-->
+
+{% endblock %}
