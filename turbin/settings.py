@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_y$hoqa#mhkqd%-(7w5^s94_m+jhjd&@#tkdq341n+401^ao8j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'main',
     'blog',
-    'product'
+    'product',
+    'partners'
 ]
 
 MIDDLEWARE = [

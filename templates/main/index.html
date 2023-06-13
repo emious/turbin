@@ -45,7 +45,7 @@
             	<div class="clearfix">
 
                 	<div class="pull-left logo-outer">
-                    	<div class="logo"><a href="index.html"><img src={{ WebsiteSetting.logo.url }} alt="" title=""></a></div>
+                    	<div class="logo"><a href="{% url 'main' %}"><img src="{{ WebsiteSetting.logo.url }}" alt="آرین توربین" title=""></a></div>
                     </div>
 
                     <div class="pull-right upper-right clearfix">
@@ -75,7 +75,7 @@
                         <!--Info Box-->
                         <div class="info-box"><!--search-box-->
                         	<!--Quote Btn-->
-                        	<div class="quote-btn"><a href="contact.html" class="get-quote-btn theme-btn">ارتباط با ما</a></div>
+                        	<div class="quote-btn"><a href="{% url 'contact' %}" class="get-quote-btn theme-btn">ارتباط با ما</a></div>
                         </div>
 
                     </div>
@@ -105,10 +105,10 @@
                                 <ul class="navigation clearfix">
                                     {% for each in nav_menu %}
                                         {% if each.product|length != 0 %}
-                                                <li class="dropdown"><a href="#">{{ each.name }}</a>
+                                                <li class="dropdown"><a href="{{ each.link }}">{{ each.name }}</a>
                                         <ul>
                                             {% for product in each.product %}
-                                            <li><a href="about.html">{{ product.name }}</a></li>
+                                            <li><a href="product/list/{{ product.id }}">{{ product.name }}</a></li>
                                             {% endfor %}
 
                                         </ul>
@@ -129,16 +129,6 @@
                         </nav>
                         <!-- Main Menu End-->
 
-                        <!--Search form-->
-                        <div class="search-form">
-                            <form method="post" action="contact.html">
-                                <div class="form-group">
-                                    <input type="text" name="search" value="" placeholder="جستجو ..." required>
-                                    <button type="submit" class="theme-btn"><span class="icon fa fa-search"></span></button>
-                                </div>
-                            </form>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -150,7 +140,7 @@
         	<div class="auto-container clearfix">
             	<!--Logo-->
             	<div class="logo pull-left">
-                	<a href="index.html" class="img-responsive"><img src= "/media/images/template/logo-small.png" alt="" title=""></a>
+                	<a href="{% url "main" %}" class="img-responsive"><img src= "/media/images/template/logo-small.png" alt="" title=""></a>
                 </div>
 
                 <!--Right Col-->
@@ -170,19 +160,19 @@
                             <ul class="navigation clearfix">
                                 {% for each in nav_menu %}
                                         {% if each.name == "خانه"  %}
-                                            <li class="dropdown current"><a href="#">{{ each.name }}</a>
+                                            <li class="dropdown current"><a href="{% url "main" %}">{{ each.name }}</a>
 
                                 </li>
                                         {% elif each.product|length != 0  %}
-                                            <li class="dropdown"><a href="#">{{ each.name }}</a>
+                                            <li class="dropdown"><a href="{{ each.link }}">{{ each.name }}</a>
                                             <ul>
                                            {% for product in each.product %}
-                                               <li><a href="about.html">{{ product.name }}</a></li>
+                                               <li><a href="product/list/{{ product.id }}">{{ product.name }}</a></li>
                                             {% endfor %}
                                             </ul>
                                             </li>
                                          {% else %}
-                                            <li><a href="contact.html">{{ each.name }}</a></li>
+                                            <li><a href="{{ each.link }}">{{ each.name }}</a></li>
                                         {% endif %}
                                     {% endfor %}
 
@@ -337,11 +327,11 @@
                     <div class="services-block col-md-4 col-sm-6 col-xs-12">
                 	<div class="inner-box">
                     	<div class="image wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        	<a href="service-detail.html"><img src="{{ each.thumbnail.url }}" alt="{{ each.name }}"></a>
+                        	<a href="product/list/{{ each.id }}"><img src="{{ each.thumbnail.url }}" alt="{{ each.name }}"></a>
                         </div>
                         <div class="lower-content">
-                        	<a href="service-detail.html" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
-                        	<h3><a href="service-detail.html">{{ each.name }}</a></h3>
+                        	<a href="product/list/{{ each.id }}" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
+                        	<h3><a href="product/list/{{ each.id }}">{{ each.name }}</a></h3>
                             <div class="text">{{ each.short_desc }}</div>
                         </div>
                     </div>
@@ -358,565 +348,12 @@
     </section>
     <!--End Welcome Section-->
 
-    <!--FullWidth Section-->
-    <section class="fullwidth-section">
-    	<div class="outer-section clearfix">
-        	<!--Content Column-->
-        	<div class="content-column">
-            	<div class="content-inner">
-                	<h2>آنچه ارائه می دهیم</h2>
-                    <div class="bold-text">ما انواع خدمات ساخت و ساز را ارائه می دهیم.</div>
-                    <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون</div>
-                    <a href="service-detail.html" class="theme-btn btn-style-two">مشاهده تمامی خدمات</a>
-                </div>
-            </div>
-            <!--Gallery Column-->
-        	<div class="gallery-column">
-            	<div class="clearfix">
-                	<!--Default Portfolio Item-->
-                	<div class="default-service-item col-md-4 col-sm-6 col-xs-12">
-                    	<div class="inner-box">
-                        	<div class="content-box">
-                            	<div class="content-inner">
-                                	<div class="content">
-                                    	<div class="icon-box"><span class="icon flaticon-helmet-1"></span></div>
-                                        <h3><a href="service-detail.html">ساخت و ساز</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                	<div class="default-service-item col-md-4 col-sm-6 col-xs-12">
-                    	<div class="inner-box">
-                        	<div class="content-box">
-                            	<div class="content-inner">
-                                	<div class="content">
-                                    	<div class="icon-box"><span class="icon flaticon-tool"></span></div>
-                                        <h3><a href="service-detail.html">جداسازی</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                	<div class="default-service-item col-md-4 col-sm-6 col-xs-12">
-                    	<div class="inner-box">
-                        	<div class="content-box">
-                            	<div class="content-inner">
-                                	<div class="content">
-                                    	<div class="icon-box"><span class="icon flaticon-paint-bucket"></span></div>
-                                        <h3><a href="service-detail.html">نقاشی</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                	<div class="default-service-item col-md-4 col-sm-6 col-xs-12">
-                    	<div class="inner-box">
-                        	<div class="content-box">
-                            	<div class="content-inner">
-                                	<div class="content">
-                                    	<div class="icon-box"><span class="icon flaticon-shovel-1"></span></div>
-                                        <h3><a href="service-detail.html">معماری</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                	<div class="default-service-item col-md-4 col-sm-6 col-xs-12">
-                    	<div class="inner-box">
-                        	<div class="content-box">
-                            	<div class="content-inner">
-                                	<div class="content">
-                                    	<div class="icon-box"><span class="icon flaticon-tool"></span></div>
-                                        <h3><a href="service-detail.html">کف و رو سازی</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Default Portfolio Item-->
-                	<div class="default-service-item col-md-4 col-sm-6 col-xs-12">
-                    	<div class="inner-box">
-                        	<div class="content-box">
-                            	<div class="content-inner">
-                                	<div class="content">
-                                    	<div class="icon-box"><span class="icon flaticon-paint-bucket"></span></div>
-                                        <h3><a href="service-detail.html">نوسازی</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--End FullWidth Section-->
-
-    <!--Counter Section-->
-    <section class="counter-section">
-    	<div class="auto-container">
-        	<div class="row clearfix">
-            	<!--Column-->
-            	<div class="counter-column col-md-6 col-sm-12 col-xs-12">
-
-                    <div class="row clearfix grid-blocks">
-
-						<!--Column-->
-                        <div class="column count-box col-md-6 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <div class="content">
-                                    <div class="count-outer">
-                                        <span class="count-text" data-speed="2000" data-stop="864">0</span>
-                                    </div>
-                                    <div class="counter-title">مشتری راضی</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Column-->
-                        <div class="column count-box col-md-6 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <div class="content">
-                                    <div class="count-outer">
-                                        <span class="count-text" data-speed="2500" data-stop="1236">0</span>
-                                    </div>
-                                    <div class="counter-title">پروژه های اجرا شده</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Column-->
-                        <div class="column count-box col-md-6 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <div class="content">
-                                    <div class="count-outer">
-                                        <span class="count-text" data-speed="3500" data-stop="2783">0</span>
-                                    </div>
-                                    <div class="counter-title">کارگر ماهر</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Column-->
-                        <div class="column count-box col-md-6 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <div class="content">
-                                    <div class="count-outer">
-                                        <span class="count-text" data-speed="3000" data-stop="57">0</span>+
-                                    </div>
-                                    <div class="counter-title">برنده جایزه</div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-                <!--Column-->
-            	<div class="content-column col-md-6 col-sm-12 col-xs-12">
-                	<div class="content-inner">
-                    	<h2>شرکت ساخت و ساز <br> با خدمات <span class="theme_color">باکیفیت</span></h2>
-                        <div class="text">
-                        	<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان</p>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال</p>
-                        </div>
-                        <a href="about.html" class="find-about">درباره ما بیشتر بدانید</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--End Counter Section-->
-
-    <!--Project Section-->
-    <section class="project-section" style="background-image:url(/media/images/template/background/1.jpg);">
-    	<div class="auto-container">
-
-        	<!--Porfolio Tabs-->
-            <div class="project-tab">
-                <!--Sec Title-->
-                <div class="clearfix">
-                    <div class="pull-left">
-                        <h2>پروژه های اخیر</h2>
-                    </div>
-                    <div class="tab-btns-box pull-right">
-                        <!--Tabs Header-->
-                        <div class="tabs-header">
-                            <ul class="product-tab-btns clearfix">
-                                <li class="p-tab-btn active-btn" data-tab="#p-tab-1">همه</li>
-                                <li class="p-tab-btn" data-tab="#p-tab-2">نوسازی</li>
-                                <li class="p-tab-btn" data-tab="#p-tab-3">جداسازی</li>
-                                <li class="p-tab-btn" data-tab="#p-tab-4">ساخت و ساز</li>
-                                <li class="p-tab-btn" data-tab="#p-tab-5">معماری</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!--Tabs Content-->
-                <div class="p-tabs-content">
-                    <!--Portfolio Tab / Active Tab-->
-                    <div class="p-tab active-tab" id="p-tab-1">
-                        <div class="project-carousel owl-theme owl-carousel">
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/3.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/3.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/4.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/4.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/5.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/5.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/6.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/6.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!--Portfolio Tab-->
-                    <div class="p-tab" id="p-tab-2">
-                        <div class="project-carousel owl-theme owl-carousel">
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/5.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/5.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/6.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/6.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/3.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/3.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/4.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/4.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!--Portfolio Tab-->
-                    <div class="p-tab" id="p-tab-3">
-                        <div class="project-carousel owl-theme owl-carousel">
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/6.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/6.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/3.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/3.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/4.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/4.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/5.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/5.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!--Portfolio Tab-->
-                    <div class="p-tab" id="p-tab-4">
-                        <div class="project-carousel owl-theme owl-carousel">
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/5.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/5.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/6.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/6.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/3.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/3.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/4.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/4.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!--Portfolio Tab-->
-                    <div class="p-tab" id="p-tab-5">
-                        <div class="project-carousel owl-theme owl-carousel">
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/6.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/6.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/3.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/3.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Gallery Item-->
-                            <div class="gallery-item">
-                                <div class="inner-box">
-                                    <figure class="image-box"><img src="/media/images/template/gallery/4.jpg" alt=""></figure>
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="/media/images/template/gallery/4.jpg" class="lightbox-image image-link" data-fancybox-group="example-gallery" title=""><span class="icon fa fa-expand"></span></a>
-                                                <a href="project-detail.html" class="image-link"><span class="icon fa fa-link"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-    <!--End Project Section-->
-
-    <!--Process Section-->
+<!--Process Section-->
     <section class="process-section">
     	<div class="auto-container">
         	<!--Sec Title-->
         	<div class="sec-title centered">
-            	<h2>پروسه کاری ما</h2>
+            	<h2>خدمات ما</h2>
             </div>
             <div class="row clearfix grid-blocks">
 
@@ -924,10 +361,12 @@
             	<div class="services-block-two col-md-4 col-sm-6 col-xs-12">
                 	<div class="inner-box">
                     	<div class="icon-box wow zoomInStable" data-wow-delay="0ms" data-wow-duration="2500ms">
-                        	<span class="icon flaticon-light-bulb"></span>
+
+                            <span class="icon flaticon-transport"></span>
+
                         </div>
-                        <h3><a href="service-detail.html">ایجاد ایده جذاب</a></h3>
-                        <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده</div>
+                        <h3><a href="">بازسازی و پوشش دهی قطعات توربین</a></h3>
+                        <div class="text">قطعات توربین در دوره های مختلف کار نیاز به بازسازی و پوشش دهی مجدد دارند تا بتوانند در دوره های بعد کاری مورد استفاده قرار بگیرند . این شرکت با استفاده از از همکاران داخلی و خارجی خود آمادگی ارايه این خدمات را دارد.</div>
                     </div>
                 </div>
 
@@ -935,10 +374,10 @@
             	<div class="services-block-two col-md-4 col-sm-6 col-xs-12">
                 	<div class="inner-box">
                     	<div class="icon-box wow zoomInStable" data-wow-delay="500ms" data-wow-duration="2500ms">
-                        	<span class="icon flaticon-school-material"></span>
+                        	<span class="icon flaticon-protractor"></span>
                         </div>
-                        <h3><a href="service-detail.html">ایجاد طرح</a></h3>
-                        <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده</div>
+                        <h3><a href="">بهینه سازی عملکرد توربین</a></h3>
+                        <div class="text">عملکرد توربین های گازی تحت تاثیر عوامل مختلف از جمله طراحی اولیه و شرایط کاری است . بازنگری این عوامل و بهبود آنها میتواند منجر به بهینه سازی عملکرد توربین و افزایش راندمان آن شود</div>
                     </div>
                 </div>
 
@@ -946,10 +385,10 @@
             	<div class="services-block-two col-md-4 col-sm-6 col-xs-12">
                 	<div class="inner-box">
                     	<div class="icon-box wow zoomInStable" data-wow-delay="1000ms" data-wow-duration="2500ms">
-                        	<span class="icon flaticon-roulette-with-button"></span>
+                        	<span class="icon flaticon-idea"></span>
                         </div>
-                        <h3><a href="service-detail.html">پایان توسعه</a></h3>
-                        <div class="text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده</div>
+                        <h3><a href="">مشاوره در انتخاب</a></h3>
+                        <div class="text">برای انتخاب مناسب ترین تجهیزات و سیستم های پوشش دهی با توجه به نیازتان با ما مشورت کنید</div>
                     </div>
                 </div>
 
@@ -1255,33 +694,7 @@
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-long-arrow-up"></span></div>
 
 
-<!-- Color Palate / Color Switcher -->
-<div class="color-palate">
-    <div class="color-trigger">
-        <i class="fa fa-gear"></i>
-    </div>
-    <div class="color-palate-head">
-        <h6>رنگ خود را انتخاب کنید</h6>
-    </div>
-    <div class="various-color clearfix">
-        <div class="colors-list">
-            <span class="palate default-color active" data-theme-file="css/color-themes/default-theme.css"></span>
-            <span class="palate teal-color" data-theme-file="css/color-themes/teal-theme.css"></span>
-            <span class="palate green-color" data-theme-file="css/color-themes/green-theme.css"></span>
-            <span class="palate yellow-color" data-theme-file="css/color-themes/yellow-theme.css"></span>
-            <span class="palate blue-color" data-theme-file="css/color-themes/blue-theme.css"></span>
-            <span class="palate purple-color" data-theme-file="css/color-themes/purple-theme.css"></span>
-            <span class="palate olive-color" data-theme-file="css/color-themes/olive-theme.css"></span>
-            <span class="palate red-color" data-theme-file="css/color-themes/red-theme.css"></span>
-        </div>
-    </div>
 
-    <div class="palate-foo">
-        <span>شما می توانید به آسانی رنگ ها را تغییر دهید.</span>
-    </div>
-
-</div>
-<!-- /.End Of Color Palate -->
 
 
 

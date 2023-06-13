@@ -17,8 +17,8 @@
 <meta name="theme-color" content="#ffc11b">
 
 <!--Favicon-->
-<link rel="shortcut icon" href="/media/images/template/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/media/images/template/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="{{ WebsiteSetting.favicon }}" type="image/x-icon">
+<link rel="icon" href="{{ WebsiteSetting.favicon }}" type="image/x-icon">
 <!-- Responsive -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -41,7 +41,7 @@
             	<div class="clearfix">
 
                 	<div class="pull-left logo-outer">
-                    	<div class="logo"><a href="index.html"><img src={{ WebsiteSetting.logo.url }} alt="" title=""></a></div>
+                    	<div class="logo"><a href={% url 'main' %}><img src="{{ WebsiteSetting.logo.url }}" alt="آرین توربین" title=""></a></div>
                     </div>
 
                     <div class="pull-right upper-right clearfix">
@@ -71,7 +71,7 @@
                         <!--Info Box-->
                         <div class="info-box"><!--search-box-->
                         	<!--Quote Btn-->
-                        	<div class="quote-btn"><a href="contact.html" class="get-quote-btn theme-btn">ارتباط با ما</a></div>
+                        	<div class="quote-btn"><a href="{% url 'contact' %}" class="get-quote-btn theme-btn">ارتباط با ما</a></div>
                         </div>
 
                     </div>
@@ -101,10 +101,10 @@
                                 <ul class="navigation clearfix">
                                     {% for each in nav_menu %}
                                         {% if each.product|length != 0 %}
-                                                <li class="dropdown"><a href="#">{{ each.name }}</a>
+                                                <li class="dropdown"><a href="{{ each.link }}">{{ each.name }}</a>
                                         <ul>
                                             {% for product in each.product %}
-                                            <li><a href="about.html">{{ product.name }}</a></li>
+                                            <li><a href="product/list/{{ product.id }}">{{ product.name }}</a></li>
                                             {% endfor %}
 
                                         </ul>
@@ -125,15 +125,7 @@
                         </nav>
                         <!-- Main Menu End-->
 
-                        <!--Search form-->
-                        <div class="search-form">
-                            <form method="post" action="contact.html">
-                                <div class="form-group">
-                                    <input type="text" name="search" value="" placeholder="جستجو ..." required>
-                                    <button type="submit" class="theme-btn"><span class="icon fa fa-search"></span></button>
-                                </div>
-                            </form>
-                        </div>
+
 
                     </div>
                 </div>
@@ -165,20 +157,16 @@
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
                                 {% for each in nav_menu %}
-                                        {% if each.name == "خانه"  %}
-                                            <li class="dropdown current"><a href="#">{{ each.name }}</a>
-
-                                </li>
-                                        {% elif each.product|length != 0  %}
-                                            <li class="dropdown"><a href="#">{{ each.name }}</a>
+                                        {% if each.product|length != 0  %}
+                                            <li class="dropdown"><a href="product/">{{ each.name }}</a>
                                             <ul>
                                            {% for product in each.product %}
-                                               <li><a href="about.html">{{ product.name }}</a></li>
+                                               <li><a href="product/list/{{ product.id }}">{{ product.name }}</a></li>
                                             {% endfor %}
                                             </ul>
                                             </li>
                                          {% else %}
-                                            <li><a href="contact.html">{{ each.name }}</a></li>
+                                            <li><a href="{{ each.link }}">{{ each.name }}</a></li>
                                         {% endif %}
                                     {% endfor %}
 
@@ -220,11 +208,21 @@
 {% block product_list %}
 {% endblock %}
 
+{% block product_detail %}
+{% endblock %}
+
+{%  block about_us %}
+{% endblock %}
+
+{% block contact %}
+{% endblock %}
+
+{% block error %}
+{% endblock %}
 
 
-
-
-
+{% block partners %}
+{% endblock %}
 
 
 
@@ -307,7 +305,7 @@
                                 <div class="footer-widget logo-widget">
                                 	<div class="widget-content">
                                     	<div class="footer-logo">
-                                        	<a href="index.html"><img src="{{ WebsiteSetting.footer_logo.url }}" alt=""></a>
+                                        	<a href="{% url 'main' %}"><img src="{{ WebsiteSetting.footer_logo.url }}" alt=""></a>
                                         </div>
 										<div class="text">{{ WebsiteSetting.about }}</div>
                                         <ul class="social-icon-two">
@@ -391,7 +389,7 @@
         	<div class="auto-container">
             	<div class="row clearfix">
                     <div class="column col-md-6 col-sm-6 col-xs-12">
-                        <div class="copyright">ارائه شده در وب‌سایت <a href="" target="_blank">karyo</a></div>
+                        <div class="copyright">ارائه شده در وب‌سایت <a href="www.karyo.ir" target="_blank">karyo</a></div>
                     </div>
                     <div class="column col-md-6 col-sm-6 col-xs-12">
                         <ul class="footer-nav">
@@ -426,5 +424,8 @@
 
 <!--Color Switcher-->
 <script src={% static "js/color-settings.js"%}></script>
+
+
+
 </body>
 </html>

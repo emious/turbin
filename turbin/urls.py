@@ -18,14 +18,23 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+import main
+
+from django.conf.urls import handler404
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('blog/', include('blog.urls')),
     path('product/', include('product.urls')),
+    path('partners/', include('partners.urls')),
 
 ]
+
+
+handler404 = main.views.error_404
+
 
 
 if settings.DEBUG:

@@ -1,0 +1,34 @@
+{% extends 'main/layout.html' %}
+
+{% block partners %}
+
+    <!--Services Section Two-->
+    <section class="services-section-two grey-bg">
+    	<div class="auto-container">
+
+            <div class="row clearfix grid-blocks">
+
+                {% for each in category %}
+                    <!--Services Block Four-->
+                <div class="services-block-four col-md-4 col-sm-6 col-xs-12">
+                	<div class="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    	<div class="image">
+                        	<a href="service-detail.html"><img src="{{ each.thumbnail.url }}" alt="{{ each.name }}"></a>
+                        </div>
+                        <div class="lower-content">
+                        	<h3><a href="list/{{ each.id }}">{{ each.name }}</a></h3>
+                            <div class="text">{{ each.short_desc }}</div>
+                            <a href="service-detail.html" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+    <!--End Services Section Two-->
+
+{% endblock %}
