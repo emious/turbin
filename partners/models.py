@@ -6,7 +6,7 @@ from django.db import models
 class Partner(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
     short_desc = models.TextField()
-    desc = models.TextField()
+    desc = models.TextField(blank=True, null=True)
     thumbnail = models.ImageField(upload_to='images/partners', blank=True, null=True)
 
     def __str__(self):
