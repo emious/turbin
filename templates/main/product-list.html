@@ -40,7 +40,7 @@
                         	<!--Image Column-->
                         	<div class="image-column col-md-5 col-sm-5 col-xs-12">
                             	<div class="image">
-                                	<img src={% if each.thumbnail_1 %}{{ news.thumbnail_1.url }}{% else %}#{% endif %} alt={{ each.name }}>
+                                	<img src={% if each.thumbnail_1 %}{{ each.thumbnail_1.url }}{% else %}#{% endif %} alt={{ each.name }}>
                                 </div>
                             </div>
                             <!--Content Column-->

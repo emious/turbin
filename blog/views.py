@@ -15,8 +15,12 @@ def blog(request):
 
 def detail_blog(request, id):
     content = Content.objects.get(pk=id)
+    contents = Content.objects.filter().reverse().order_by('-id')[0:5]
+    keyword_list = content.tags.split(',')
     context = {
-        "content": content
+        "content": content,
+        "contents": contents,
+        "keywords": keyword_list
     }
     return render(request, 'main/blog-single.html', context)
 

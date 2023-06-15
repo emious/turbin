@@ -16,7 +16,7 @@ class Content(models.Model):
     slug = models.SlugField(max_length=200, unique=True, verbose_name="پیوند")
     short_desc = models.TextField(verbose_name="توضیحات کوتاه")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts', verbose_name="نویسنده")
-    tags = models.TextField(null=True, verbose_name="تگ ها")
+    tags = models.TextField(null=True, blank=True, verbose_name="تگ ها")
     thumbnail = models.ImageField(upload_to='', blank=True, null=True, verbose_name="تصویر")
     created_on = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ارسال")
     updated_on = models.DateTimeField(auto_now=True, verbose_name="تاریخ بروزرسانی")
