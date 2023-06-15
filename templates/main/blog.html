@@ -8,13 +8,13 @@
         	<div class="row clearfix">
             	<!--Title -->
             	<div class="title-column col-md-6 col-sm-8 col-xs-12">
-                	<h1>اخبار ما</h1>
+                	<h1>وبلاگ</h1>
                 </div>
                 <!--Bread Crumb -->
                 <div class="breadcrumb-column col-md-6 col-sm-4 col-xs-12">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
-                        <li class="active">اخبار ما</li>
+                        <li><a href="{% url "main" %}">خانه</a></li>
+                        <li class="active">وبلاگ</li>
                     </ul>
                 </div>
             </div>
@@ -36,13 +36,13 @@
                         <div class="news-block-two">
                             <div class="inner-box">
                                 <div class="image">
-                                    <a href="blog-single.html"><img src={% if content.thumbnail %}{{ content.thumbnail.url }}{% else %}#{% endif %} alt={{ content.title }}></a>
+                                    <a href="{% url "detail_blog" id=content.id %}"><img src={% if content.thumbnail %}{{ content.thumbnail.url }}{% else %}#{% endif %} alt={{ content.title }}></a>
                                 </div>
                                 <div class="lower-content">
-                                    <div class="post-date">{{ content.created_on }}</div>
-                                    <h3><a href="blog-single.html">{{ content.title }}</a></h3>
+                                    <div class="post-date">{{ content.jpublish }}</div>
+                                    <h3><a href="{% url "detail_blog" id=content.id %}">{{ content.title }}</a></h3>
                                     <div class="text">{{ content.short_desc }}</div>
-                                    <a class="continue-reading" href="content/{{ content.id }}">ادامه مطلب <span class="fa fa-long-arrow-left"></span></a>
+                                    <a class="continue-reading" href="{% url "detail_blog" id=content.id %}">ادامه مطلب <span class="fa fa-long-arrow-left"></span></a>
                                 </div>
                             </div>
                         </div>
@@ -70,81 +70,6 @@
                 <!--Sidebar Side-->
                 <div class="sidebar-side col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 	<aside class="sidebar blog-sidebar">
-						
-                        <!-- Search -->
-                        <div class="sidebar-widget search-box">
-                        	<form method="post" action="contact.html">
-                                <div class="form-group">
-                                    <input type="search" name="search-field" value="" placeholder="جستجو ..." required>
-                                    <button type="submit"><span class="icon fa fa-search"></span></button>
-                                </div>
-                            </form>
-						</div>
-                     
-                        <!--Blog Category Widget-->
-                        <div class="sidebar-widget sidebar-blog-category">
-                            <div class="sidebar-title">
-                                <h2>دسته‌بندی ها</h2>
-                            </div>
-                            <ul class="blog-cat">
-                                <li><a href="#">ساخت و ساز<span>(06)</span></a></li>
-                                <li><a href="#">معماری <span>(12)</span></a></li>
-                                <li><a href="#">جداسازی<span>(07)</span></a></li>
-                                <li><a href="#">نوسازی<span>(23)</span></a></li>
-                                <li><a href="#">طراحی و ساخت<span>(19)</span></a></li>
-                            </ul>
-                        </div>
-                        
-                        
-                        <!-- Popular Posts -->
-                        <div class="sidebar-widget popular-posts">
-                            <div class="sidebar-title"><h2>اخبار جدید</h2></div>
-
-                            <article class="post">
-                            	<figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a></figure>
-                                <div class="text"><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a></div>
-                                <div class="post-info">13 آذر 1399 </div>
-                            </article>
-
-                            <article class="post">
-                            	<figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a></figure>
-                                <div class="text"><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a></div>
-                                <div class="post-info">13 آذر 1399</div>
-                            </article>
-                            
-                            <article class="post">
-                            	<figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a></figure>
-                                <div class="text"><a href="blog-single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a></div>
-                                <div class="post-info">13 آذر 1399</div>
-                            </article>
-
-                        </div>
-                        
-                        <!-- Popular Tags -->
-                        <div class="sidebar-widget popular-tags">
-                            <div class="sidebar-title"><h2>کلمات کلیدی</h2></div>
-                            <a href="#">خانه</a>
-                            <a href="#">نوسازی</a>
-                            <a href="#">جداسازی</a>
-                            <a href="#">معماری</a>
-                            <a href="#">ساختن</a>
-                            <a href="#">طراحی و ساخت</a>
-                        </div>
-
-						<!-- Gallery Widget-->
-                        <div class="sidebar-widget gallery-widget">
-                            <div class="sidebar-title">
-                            	<h2>اینستاگرام</h2>
-                            </div>
-                            <div class="clearfix grid-blocks">
-                            	<figure class="image"><a href="images/gallery/4.jpg" class="lightbox-image"><img src="images/resource/sidebar-gallery-1.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/gallery/3.jpg" class="lightbox-image"><img src="images/resource/sidebar-gallery-2.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/gallery/4.jpg" class="lightbox-image"><img src="images/resource/sidebar-gallery-3.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/gallery/4.jpg" class="lightbox-image"><img src="images/resource/sidebar-gallery-4.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/gallery/3.jpg" class="lightbox-image"><img src="images/resource/sidebar-gallery-5.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/gallery/4.jpg" class="lightbox-image"><img src="images/resource/sidebar-gallery-6.jpg" alt=""></a></figure>
-                            </div>
-                        </div>
                         
                     </aside>
                 </div>

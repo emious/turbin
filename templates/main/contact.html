@@ -13,7 +13,7 @@
                 <!--Bread Crumb -->
                 <div class="breadcrumb-column col-md-6 col-sm-4 col-xs-12">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="{% url "main" %}">خانه</a></li>
                         <li class="active">تماس با ما</li>
                     </ul>
                 </div>
@@ -67,9 +67,9 @@
                 <div class="column info-column col-md-4 col-sm-12 col-xs-12">
                 	<h2>آدرس ما</h2>
                     <ul class="contact-info">
-                        <li><h4>ایمیل</h4>denis@getcraftwork.com</li>
-                        <li><h4>تلفن</h4><span class="ltr-text">+30 356 3778 241</span> , <span class="ltr-text">+560 565 742</span></li>
-                        <li><h4>آدرس</h4>تبریز، چهارراه آبرسان، فلکه دانشگاه، برج بلور، طبقه 345، واحد 85</li>
+                        <li><h4>ایمیل</h4>{{ WebsiteSetting.email }}</li>
+                        <li><h4>تلفن</h4><span class="ltr-text">{{ WebsiteSetting.phone_number }}</span> , <span class="ltr-text">+560 565 742</span></li>
+                        <li><h4>آدرس</h4>{{ WebsiteSetting.address }}</li>
                     </ul>
                 </div>
             </div>

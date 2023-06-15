@@ -8,13 +8,13 @@
         	<div class="row clearfix">
             	<!--Title -->
             	<div class="title-column col-md-6 col-sm-8 col-xs-12">
-                	<h1>صفحه پیدا نشد</h1>
+                	<h1>دسته بندی محصولات</h1>
                 </div>
                 <!--Bread Crumb -->
                 <div class="breadcrumb-column col-md-6 col-sm-4 col-xs-12">
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">خانه</a></li>
-                        <li class="active">404</li>
+                        <li><a href="{% url "main" %}">خانه</a></li>
+                        <li class="active">دسته بندی</li>
                     </ul>
                 </div>
             </div>
@@ -33,12 +33,12 @@
                 <div class="services-block-four col-md-4 col-sm-6 col-xs-12">
                 	<div class="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
                     	<div class="image">
-                        	<a href="service-detail.html"><img src="{{ each.thumbnail.url }}" alt="{{ each.name }}"></a>
+                        	<a href="{% url "product_list" id=each.id %}"><img src="{{ each.thumbnail.url }}" alt="{{ each.name }}"></a>
                         </div>
                         <div class="lower-content">
-                        	<h3><a href="list/{{ each.id }}">{{ each.name }}</a></h3>
+                        	<h3><a href="{% url "product_list" id=each.id %}">{{ each.name }}</a></h3>
                             <div class="text">{{ each.short_desc }}</div>
-                            <a href="service-detail.html" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
+                            <a href="{% url "product_list" id=each.id %}" class="arrow-box"><span class="arrow flaticon-forward-arrow"></span></a>
                         </div>
                     </div>
                 </div>
