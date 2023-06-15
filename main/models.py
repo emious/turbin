@@ -40,7 +40,7 @@ class WebsiteSetting(models.Model):
 
     phone_number = models.CharField(max_length=12, default='', blank=True, verbose_name='شماره تلفن')
     email = models.CharField(max_length=30, default='', blank=True, verbose_name='ایمیل')
-    address = models.CharField(max_length=50, default='', blank=True, verbose_name='آدرس')
+    address = models.CharField(max_length=70, default='', blank=True, verbose_name='آدرس')
     work_time = models.CharField(max_length=30, default='', blank=True, verbose_name='ساعت کاری')
     about = models.TextField(default='', blank=True, verbose_name='درباره ما')
     desc = models.TextField(default='', verbose_name='توضیحات اضافه')
